@@ -1,7 +1,7 @@
-import { Firestore as FSDB } from '@google-cloud/firestore';
-import { Request } from 'express';
+import {Firestore as FSDB} from '@google-cloud/firestore';
+import {NextFunction, Request, Response} from 'express';
 
-import { Settings } from './Types/Settings';
+import {Settings} from './Types/Settings';
 
 export * from './Types';
 
@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-export default (settings?: Settings) => (req: Request) => {
+export default (settings?: Settings) => (req: Request, res: Response, next: NextFunction) => {
   const db: FSDB = new FSDB(
     settings && settings.projectId
       ? {
@@ -24,4 +24,6 @@ export default (settings?: Settings) => (req: Request) => {
   );
 
   req.firestore = db;
+
+  next();
 };
