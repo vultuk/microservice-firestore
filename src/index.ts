@@ -1,7 +1,7 @@
-import {Firestore as FSDB} from '@google-cloud/firestore';
-import {NextFunction, Request, Response} from 'express';
+import { Firestore as FSDB } from '@google-cloud/firestore';
+import { NextFunction, Request, Response } from 'express';
 
-import {Settings} from './Types/Settings';
+import { Settings } from './Types/Settings';
 
 export * from './Types';
 
